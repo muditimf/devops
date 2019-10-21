@@ -1,0 +1,29 @@
+- hosts: all
+  remote_user: devops
+  become: true
+  tasks:
+   - name: installing httpd
+     yum:
+       name: httpd
+       state: latest
+
+   - name: copying fioe
+     template:
+       src: /home/student/playbook/files/abc.html
+       dest: /var/www/html/index.html
+       owner: apache
+
+   - name: opening service in firewall
+     firewalld:
+       service: http
+       permanent: yes
+       state: enabled
+     ignore_errors: yes
+
+   - name: starting service
+     service:
+       name: httpd
+       state: started
+       enabled: yes
+
+
