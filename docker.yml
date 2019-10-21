@@ -1,0 +1,10 @@
+- hosts: all
+  connection: docker
+  tasks:
+   - name: docker
+     docker_host: unix:////var/run/docker.sock
+     docker_container:
+      name: my
+      image: alpine
+
+  

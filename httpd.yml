@@ -1,0 +1,19 @@
+- hosts: 54.163.110.99
+  tasks:
+   - name: installing httpd
+     package:
+      name: httpd
+      state: present
+      use: yum
+     when: ansible_facts['os_family'] == " Redhat "
+
+   - name: coping file
+     copy:
+      src: /etc/ansible/index.html
+      dest: /var/www/html/  
+
+   - name: startiing service
+     service:
+      name: httpd
+      state: started
+      enabled: yes

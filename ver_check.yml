@@ -1,0 +1,10 @@
+- hosts: all
+  vars:
+    x: "{{ ansible_python_version }}"
+  tasks:
+   - debug: var=x
+   - name: storing value in file
+     copy:
+       content: "{{ x }}"
+       dest: /tmp/out.txt
+     delegate_to: localhost

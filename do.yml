@@ -1,0 +1,9 @@
+---
+- hosts: all
+  connection: docker
+  tasks:
+  - name: crteate cont
+    docker_container:
+     name: mudit
+     image: alpine
+
