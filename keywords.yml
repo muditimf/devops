@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+   - name: running command
+     shell: "httpd -k start"
+     register: mm
+     changed_when: '"already running" not in mm.stdout'
+   - debug: 
+      msg: "{{ mm.stdout }}"
