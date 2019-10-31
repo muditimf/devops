@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+   - name: launching ec2 instance
+     ec2:
+      ec2_region: us-east-1
+      instance_ids: i-0f1b142e8bf8859da
+      state: absent

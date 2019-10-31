@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+   - name: launching ec2 instance
+     ec2:
+      key_name: devops_se
+      instance_type: t2.micro
+      image: ami-0b69ea66ff7391e80
+      ec2_region: us-east-1
+      wait: yes
+      vpc_subnet_id: subnet-3b032d15
+      assign_public_ip: yes
+
