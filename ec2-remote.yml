@@ -2,8 +2,6 @@
   tasks:
    - name: managing apis
      ec2:
-      aws_access_key: AKIAIWCEQSS4V4FA3GHQ
-      aws_secret_key: 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
       aws_region: us-east-1
       key_name: devops_se
       instance_type: t2.micro
