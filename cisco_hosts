@@ -1,0 +1,1 @@
+ip ansible_ssh_user=user ansible_network_os=ios
