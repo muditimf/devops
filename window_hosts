@@ -1,0 +1,1 @@
+ip ansible_user=Administrator ansible_password=QQToXT%mt? ansible_connection=winrm ansible_port=5986 ansible_winrm_server_cert_validation=ignore
