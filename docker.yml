@@ -1,8 +1,7 @@
 - hosts: all
-  connection: docker
+  connection: ssh
   tasks:
    - name: docker
-     docker_host: unix:////var/run/docker.sock
      docker_container:
       name: my
       image: alpine
