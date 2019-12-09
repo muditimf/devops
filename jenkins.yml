@@ -1,0 +1,38 @@
+- hosts: all
+  tasks:
+   - name: installing java version 8
+     package: 
+      name: java-1.8.0-openjdk
+      state: present
+      use: yum
+
+   - name: configuring jenkins repo
+     get_url:
+      url: http://pkg.jenkins-ci.org/redhat/jenkins.repo
+      dest: /etc/yum.repos.d/jenkins.repo
+
+   - name: importing rpm key
+     rpm_key:
+      state: present
+      key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+
+   - name: installing jenkins 
+     package:
+      name: jenkins
+      state: present
+      use: yum
+
+   - name: wait timeout
+     wait_for:
+      timeout: 30
+
+   - name: starting service
+     service:
+      name: jenkins
+      state: started
+      enabled: yes
+
+   - name: init password jenkins
+     shell: cat /var/lib/jenkins/secrets/initialAdminPassword 
+     register: result
+   - debug: var=result.stdout
