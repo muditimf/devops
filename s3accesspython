@@ -1,0 +1,25 @@
+#!/usr/bin/python3
+
+import boto3
+
+# get a handle on s3
+session = boto3.Session(
+                    aws_access_key_id='',
+                    aws_secret_access_key='',
+                    region_name='us-east')
+
+s3 = session.resource('s3')
+
+# get a handle on the bucket that holds your file
+bucket = s3.Bucket('') # example: energy_market_procesing
+
+# get a handle on the object you want (i.e. your file)
+obj = bucket.Object(key='') # example: market/zone1/data.csv
+
+
+# get the object
+response=obj.get
+#print(response)
+
+# read the contents of the file
+lines = response['Body'].get()
